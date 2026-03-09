@@ -9,16 +9,17 @@
 <body>
     <main>
         <h1>Task Tracker</h1>
-        <input
-            type="text"
-            id="task"
-            name="task"/>
-        <button id="buttonSubmitTask" type="button">&crarr;</button>
-
+        <div class="input-wrapper">
+            <input
+                type="text"
+                placeholder="Start writing and press enter to create task"
+                id="task-input"
+                name="task-input"/>
+            <button id="buttonSubmitTask" type="button">&crarr;</button>
+        </div>
         <ul id="listTasks">
-
         </ul>
-        </main>
+    </main>
     
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 48px;
+}
+
+main {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 16px;
+    border: 2px solid #d1d1d1;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+#task-input {
+    width: 100%;
+    padding: 16px 60px 16px 20px;
+    font-size: 16px;
+    border: 2px solid #1a1a1a;
+    border-radius: 16px;
+    outline: none;
+}
+
+#buttonSubmitTask {
+    position: absolute;
+    right: 8px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 44px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 2px solid #eee;
+}
+
+input[type="checkbox"] {
+    appearance: none; 
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #1a1a1a;
+    border-radius: 6px;
+    margin-right: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #7a7a7a;
+    border-color: #7a7a7a;
+}
+
+li span {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #1a1a1a;
+    transition: all 0.3s;
+}
+
+li span.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.delete-btn {
+    background: black;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #333;
+}
