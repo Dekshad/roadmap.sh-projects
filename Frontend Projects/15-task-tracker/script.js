@@ -1,22 +1,8 @@
-const inputTask = document.getElementById('task');
-const buttonSubmitTask = document.getElementById('buttonSubmitTask');
-
-buttonSubmitTask.addEventListener("click", addTask);
-function addTask()
-{
-    if(inputTask.value!='') new Task(inputTask.value);
-    inputTask.value = '';
-    Render();
-}
-
-
 let tasksList = [];
 
 function Task(description) {
   this.description = description;
   this.isCompleted = false;
-
-  tasksList.unshift(this);
 
   this.delete = function() {
     tasksList.splice(tasksList.indexOf(this), 1);
@@ -27,35 +13,57 @@ function Task(description) {
   }
 }
 
-function Render()
+const inputTask = document.getElementById('task-input');
+const buttonSubmitTask = document.getElementById('buttonSubmitTask');
+
+buttonSubmitTask.addEventListener("click", addTask);
+function addTask()
+{
+    const taskDescription = inputTask.value.trim();
+    if(taskDescription!=='') 
+        {
+            const newTask = new Task(taskDescription);
+            tasksList.unshift(newTask);
+            
+            inputTask.value = '';
+            renderTasks();
+        }
+}
+
+inputTask.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        addTask();
+    }
+});
+
+function renderTasks()
 {
     const listTasks = document.getElementById('listTasks');
     listTasks.innerHTML = '';
+    tasksList.sort((a, b) =>  a.isCompleted - b.isCompleted );
 
     tasksList.forEach(task =>
         {
             const checkboxStateOfTask = document.createElement('input');
             checkboxStateOfTask.type = 'checkbox';
             checkboxStateOfTask.checked = task.isCompleted;
-            checkboxStateOfTask.addEventListener("click", () => { task.changeState(); Render()} );
-
+            checkboxStateOfTask.addEventListener("click", () => { task.changeState(); renderTasks()} );
+            
             const taskText = document.createElement('span');
             taskText.textContent = task.description;
-            const taskListItem = document.createElement('li');
+            if(task.isCompleted) taskText.classList.add('completed');;
 
             const deleteButton = document.createElement('button');
-            deleteButton.addEventListener('click', () => { task.delete(); Render() });
+            deleteButton.addEventListener('click', () => { task.delete(); renderTasks() });
+            deleteButton.innerText = '🗑️';
+            deleteButton.classList.add('delete-btn');
 
-            taskListItem.appendChild(checkboxStateOfTask);
-            taskListItem.appendChild(taskText);
-            taskListItem.appendChild(deleteButton);
+            const tasksListItem = document.createElement('li');
+            tasksListItem.appendChild(checkboxStateOfTask);
+            tasksListItem.appendChild(taskText);
+            tasksListItem.appendChild(deleteButton);
 
-
-            listTasks.appendChild(taskListItem);
+            listTasks.appendChild(tasksListItem);
         }
     );
 }
-
-new Task("Привіт! Це перша таска");
-Render();
-
