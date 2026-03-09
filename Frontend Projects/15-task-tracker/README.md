@@ -1,5 +1,8 @@
 # Task Tracker 📝
 
+Project idea and requirements from [roadmap.sh](https://roadmap.sh/projects/task-tracker-js).
+---
+
 A clean, lightweight, and interactive To-Do List application built with vanilla JavaScript. This project focuses on efficient state management and an Object-Oriented Programming (OOP) approach.
 
 <div align="center">
